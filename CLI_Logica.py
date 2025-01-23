@@ -1,3 +1,5 @@
+import json
+
 def obtener_opciones():
     while True:
         try:
@@ -9,4 +11,6 @@ def obtener_opciones():
         except ValueError:
             print("Debe ingresar un caracter numerico y no de otro tipo.")
 
-
+def crear_archivo(nombre_archivo, contenido):
+    with open(nombre_archivo, "w") as archivo:
+        json.dump(contenido, archivo)

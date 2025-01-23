@@ -5,7 +5,8 @@ def main():
         menu.menu_inicial()
         opciones = logica.obtener_opciones()
         if opciones == 1:
-            menu.menu_login()
+            datos = menu.menu_login()
+            logica.crear_archivo("Usuarios.json", datos)
         elif opciones == 2:
             print("Registro exitoso")
         elif opciones == 3:

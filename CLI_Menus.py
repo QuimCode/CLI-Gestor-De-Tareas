@@ -11,7 +11,10 @@ def menu_login():
     "Ingrese su nombre y contraseña de usuario"
     username = input("Nombre de usuario: ")
     password = input("Contraseña: ")
-    return username and password
+    return {
+        "username": username,
+        "password": password
+    }
 
 def mostrar_menu():
     # Funcion de ejecucion de los menus
