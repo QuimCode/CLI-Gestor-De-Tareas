@@ -1,4 +1,5 @@
 import json
+import os
 
 def obtener_opciones():
     while True:
@@ -11,6 +12,22 @@ def obtener_opciones():
         except ValueError:
             print("Debe ingresar un caracter numerico y no de otro tipo.")
 
-def crear_archivo(nombre_archivo, contenido):
+def crear_archivo(nombre_archivo, datos):
+    try:
+        with open(nombre_archivo, "r") as archivo:
+            json.load(archivo)
+
+            for item in contenido:
+                if item["nombre_usuario"] == datos["nombre_usuario"]:
+                    print("El usuario ya existe, elije otro nombre")
+                    return
+                
+            contenido.append(datos)
+
+    except FileNotFoundError:
+        contenido = []
+
     with open(nombre_archivo, "w") as archivo:
-        json.dump(contenido, archivo)
+        json.dump(contenido, archivo, indent=4, ensure_ascii=False)
+        print("Registro exitoso")
+        
