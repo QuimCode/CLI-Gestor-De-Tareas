@@ -60,6 +60,8 @@ def iniciar_sesion():
             for item in contenido:
                 if item["dato_nombre"] == nombre_de_usuario and item["dato_clave"] == contraseña:
                     print(f"Bienvenido {nombre_de_usuario}")
+                else:
+                    print("Usuario o contraseña incorrectos o usuarios no registrado.")
     
     except FileNotFoundError:
         print("No hay usuarios registrados")
