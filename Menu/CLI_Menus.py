@@ -1,3 +1,4 @@
+import Logica.CLI_Logica as logica
 
 def menu_inicial():
     # Funcion de presentacion solo textual de las comandos
@@ -7,14 +8,8 @@ def menu_inicial():
     print("3. Salir")
 
 def menu_registro():
-    # Funcion de presentacion solo textual de inicio de sesion
-    "Ingrese su nombre y contraseña para registrarse"
-    username = input("Nombre de usuario: ")
-    password = input("Contraseña: ")
-    return {
-        "username": username,
-        "password": password
-    }
+    datos_usuario = logica.registrarse()
+    return datos_usuario
 
 def mostrar_menu():
     # Funcion de ejecucion de los menus
