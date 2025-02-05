@@ -1,16 +1,53 @@
 import json
 import os
+import Menu.CLI_Menus as menu
 
 def obtener_opciones():
     while True:
         try:
             opciones_elejidas = int(input("Ingrese el numero de la opcion que desea:"))
-            if opciones_elejidas in [1,2,3]:
+            if opciones_elejidas in [1,2,3,4,5,6,7,8]:
                 return opciones_elejidas
             else:
                 print("Opcion no valida, solo elije entre los numeros 1,2,3")
         except ValueError:
             print("Debe ingresar un caracter numerico y no de otro tipo.")
+
+def interacion_menu():
+    while True:
+        menu.mostrar_menu()
+        opciones = obtener_opciones()
+        if opciones == 1:
+            datos = menu.menu_registro()
+            crear_archivo("Usuarios.json", datos)
+        elif opciones == 2:
+            iniciar_sesion()
+            break
+        elif opciones == 3:
+            print("Saliendo...")
+            break
+
+def interacion_menu_app():
+    while True:
+        menu.menu_app()
+        opciones = obtener_opciones()
+        if opciones == 1:
+            print("Crear tarea")
+        elif opciones == 2:
+            print("Editar tarea")
+        elif opciones == 3:
+            print("Eliminar tarea")
+        elif opciones == 4:
+            print("Listar tareas terminadas")
+        elif opciones == 5:
+            print("Listar tareas pendientes")
+        elif opciones == 6:
+            print("Listar tareas no terminadas")
+        elif opciones == 7:
+            print("Listar todas las tareas")
+        elif opciones == 8:
+            print("Volver al menu principal")
+            break
 
 #====================================REGISTRO & Y LOGUEO====================================
 
@@ -60,6 +97,7 @@ def iniciar_sesion():
             for item in contenido:
                 if item["dato_nombre"] == nombre_de_usuario and item["dato_clave"] == contraseña:
                     print(f"Bienvenido {nombre_de_usuario}")
+                    interacion_menu_app()
                 else:
                     print("Usuario o contraseña incorrectos o usuarios no registrado.")
     
