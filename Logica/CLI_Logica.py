@@ -2,12 +2,17 @@ import json
 import os
 import Menu.CLI_Menus as menu
 
-def obtener_opciones():
+#====================================MENU====================================
+opciones_validas_menu = [1,2,3]
+opciones_validas_menu_app = [1,2,3,4,5,6,7,8]
+
+
+def obtener_opciones(opciones_correctas):
     while True:
         try:
-            opciones_elejidas = int(input("Ingrese el numero de la opcion que desea:"))
-            if opciones_elejidas in [1,2,3,4,5,6,7,8]:
-                return opciones_elejidas
+            opciones_elejida = int(input("Ingrese el numero de la opcion que desea:"))
+            if opciones_elejida in opciones_correctas:
+                return opciones_elejida
             else:
                 print("Opcion no valida, solo elije entre los numeros 1,2,3")
         except ValueError:
@@ -15,22 +20,22 @@ def obtener_opciones():
 
 def interacion_menu():
     while True:
-        menu.mostrar_menu()
-        opciones = obtener_opciones()
+        menu.menu_inicial()
+        opciones = obtener_opciones(opciones_validas_menu)
         if opciones == 1:
             datos = menu.menu_registro()
             crear_archivo("Usuarios.json", datos)
         elif opciones == 2:
-            iniciar_sesion()
-            break
+            if iniciar_sesion():
+                return True
         elif opciones == 3:
             print("Saliendo...")
-            break
+            return False
 
 def interacion_menu_app():
     while True:
         menu.menu_app()
-        opciones = obtener_opciones()
+        opciones = obtener_opciones(opciones_validas_menu_app)
         if opciones == 1:
             print("Crear tarea")
         elif opciones == 2:
@@ -46,8 +51,9 @@ def interacion_menu_app():
         elif opciones == 7:
             print("Listar todas las tareas")
         elif opciones == 8:
-            print("Volver al menu principal")
-            break
+            print("Volver al menu principal")            
+            # menu.menu_inicial()
+            return False
 
 #====================================REGISTRO & Y LOGUEO====================================
 
@@ -91,13 +97,14 @@ def iniciar_sesion():
     contraseña = input("Ingrese Contraseña:")
 
     try:
-        with open(ruta_carpeta, "r") as archivo:
+        with open(ruta_carpeta, "r", encoding="utf-8") as archivo:
             contenido = json.load(archivo)
 
             for item in contenido:
                 if item["dato_nombre"] == nombre_de_usuario and item["dato_clave"] == contraseña:
                     print(f"Bienvenido {nombre_de_usuario}")
                     interacion_menu_app()
+                    return True
                 else:
                     print("Usuario o contraseña incorrectos o usuarios no registrado.")
     
