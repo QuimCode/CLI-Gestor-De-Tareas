@@ -1,6 +1,7 @@
 import json
 import os
 import Menu.CLI_Menus as menu
+import Logica.CLI_Logica_Tareas as log_tareas
 
 #====================================MENU====================================
 opciones_validas_menu = [1,2,3]
@@ -32,12 +33,13 @@ def interacion_menu():
             print("Saliendo...")
             return False
 
-def interacion_menu_app():
+def interacion_menu_app(user):
     while True:
         menu.menu_app()
         opciones = obtener_opciones(opciones_validas_menu_app)
         if opciones == 1:
             print("Crear tarea")
+            log_tareas.crear_tarea(user)
         elif opciones == 2:
             print("Editar tarea")
         elif opciones == 3:
@@ -103,10 +105,12 @@ def iniciar_sesion():
             for item in contenido:
                 if item["dato_nombre"] == nombre_de_usuario and item["dato_clave"] == contraseña:
                     print(f"Bienvenido {nombre_de_usuario}")
-                    interacion_menu_app()
+                    usuario_actual = nombre_de_usuario
+                    interacion_menu_app(usuario_actual)
                     return True
-                else:
-                    print("Usuario o contraseña incorrectos o usuarios no registrado.")
-    
+            
+            print("Usuario o contraseña incorrecta")
+            return False
+
     except FileNotFoundError:
-        print("No hay usuarios registrados")
+        print("Problemas en la base de datos.")
