@@ -1,0 +1,20 @@
+5/2/2025
+----------------------------.
+1. Mira que hay errores en:
+
+def menu_registro_tarea():
+    datos_tarea = log_tareas.crear_tarea()
+    return datos_tarea
+
+Esto sucede en CLI_Menu por que no estoy pasando el argumento para el parametro de usuario
+
+------------------------------
+
+Tambien toquetee algo en las funciones de crear archivo json en CLI_logica que 
+hace que no se guarden los nuevos registros por algouna razon, verificar eso.
+
+---------------------------xxx
+
+6/2/2025
+----------------------------.
+1.

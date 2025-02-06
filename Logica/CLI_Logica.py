@@ -39,7 +39,8 @@ def interacion_menu_app(user):
         opciones = obtener_opciones(opciones_validas_menu_app)
         if opciones == 1:
             print("Crear tarea")
-            log_tareas.crear_tarea(user)
+            datos = menu.menu_registro_tarea()
+            log_tareas.crear_archivo_tarea(user, datos)
         elif opciones == 2:
             print("Editar tarea")
         elif opciones == 3:
@@ -72,28 +73,6 @@ def registrarse():
         "dato_clave": contraseña_usuario
     }
 
-def crear_archivo(nombre_archivo, datos):
-
-    try:
-        with open(ruta_carpeta, "r", encoding="utf-8") as archivo:
-            contenido = json.load(archivo)
-
-            for item in contenido:
-                if item["dato_nombre"] == datos["dato_nombre"]:
-                    print("El usuario ya existe, elije otro nombre")
-                    return
-                
-            contenido.append(datos)
-
-    except FileNotFoundError:
-        contenido = []
-        contenido.append(datos)
-        
-
-    with open(ruta_carpeta, "w") as archivo:
-        json.dump(contenido, archivo, indent=4, ensure_ascii=False)
-        print("Registro exitoso")
-
 def iniciar_sesion():
     nombre_de_usuario = input("Ingrese Nombre de usuario:")
     contraseña = input("Ingrese Contraseña:")
@@ -114,3 +93,27 @@ def iniciar_sesion():
 
     except FileNotFoundError:
         print("Problemas en la base de datos.")
+
+
+#====================================CREAR ARCHIVO====================================
+
+def crear_archivo(nombre_archivo, datos):
+
+    try:
+        with open(ruta_carpeta, "r", encoding="utf-8") as archivo:
+            contenido = json.load(archivo)
+
+            for item in contenido:
+                if item["dato_nombre"] == datos["dato_nombre"]:
+                    print("El usuario ya existe, elije otro nombre")
+                    return
+                
+            contenido.append(datos)
+
+    except FileNotFoundError:
+        contenido = []
+        contenido.append(datos)
+        
+        with open(nombre_archivo and ruta_carpeta, "w") as archivo:
+            json.dump(contenido, archivo, indent=4, ensure_ascii=False)
+            print("Registro exitoso")

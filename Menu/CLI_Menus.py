@@ -1,4 +1,5 @@
 import Logica.CLI_Logica as logica
+import Logica.CLI_Logica_Tareas as log_tareas
 
 def mostrar_menu():
     # Funcion de ejecucion de los menus
@@ -25,3 +26,8 @@ def menu_app():
     print("6. Listar tareas no terminadas")
     print("7. Listar todas las tareas")
     print("8. Volver al menu principal")
+
+
+def menu_registro_tarea():
+    datos_tarea = log_tareas.crear_tarea() #Falta pasar de alguna forma el argumento de nombre de usuario
+    return datos_tarea
