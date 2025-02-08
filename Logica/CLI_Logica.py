@@ -39,7 +39,7 @@ def interacion_menu_app(user):
         opciones = obtener_opciones(opciones_validas_menu_app)
         if opciones == 1:
             print("Crear tarea")
-            datos = menu.menu_registro_tarea()
+            datos = menu.menu_registro_tarea(user)
             log_tareas.crear_archivo_tarea(user, datos)
         elif opciones == 2:
             print("Editar tarea")
@@ -98,7 +98,6 @@ def iniciar_sesion():
 #====================================CREAR ARCHIVO====================================
 
 def crear_archivo(nombre_archivo, datos):
-
     try:
         with open(ruta_carpeta, "r", encoding="utf-8") as archivo:
             contenido = json.load(archivo)
@@ -114,6 +113,6 @@ def crear_archivo(nombre_archivo, datos):
         contenido = []
         contenido.append(datos)
         
-        with open(nombre_archivo and ruta_carpeta, "w") as archivo:
-            json.dump(contenido, archivo, indent=4, ensure_ascii=False)
-            print("Registro exitoso")
+    with open(nombre_archivo and ruta_carpeta, "w", encoding="utf-8") as archivo:
+        json.dump(contenido, archivo, indent=4, ensure_ascii=False)
+        print("Registro exitoso")

@@ -1,0 +1,11 @@
+[
+    {
+        "usuario": "Malena",
+        "nombre_de_tarea": "Despertarme",
+        "descripcion_de_tarea": "Levantarse de la cama",
+        "horario_de_tarea": "7:00",
+        "tarea_terminada": false,
+        "tarea_no_terminada": true,
+        "tarea_no_vencida": true
+    }
+]

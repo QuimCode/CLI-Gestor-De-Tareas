@@ -17,4 +17,6 @@ hace que no se guarden los nuevos registros por algouna razon, verificar eso.
 
 6/2/2025
 ----------------------------.
-1.
+
+7/2/2025
+----------------------------.

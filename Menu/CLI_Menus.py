@@ -28,6 +28,6 @@ def menu_app():
     print("8. Volver al menu principal")
 
 
-def menu_registro_tarea():
-    datos_tarea = log_tareas.crear_tarea() #Falta pasar de alguna forma el argumento de nombre de usuario
+def menu_registro_tarea(usuario):
+    datos_tarea = log_tareas.crear_tarea(usuario) #Falta pasar de alguna forma el argumento de nombre de usuario
     return datos_tarea

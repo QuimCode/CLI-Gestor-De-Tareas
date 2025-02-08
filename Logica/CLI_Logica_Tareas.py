@@ -20,7 +20,6 @@ def crear_tarea(usuario):
 ruta_carpeta = "Informacion/Tareas.json"
 
 def crear_archivo_tarea(nombre, datos):
-
     try:
         with open(ruta_carpeta and nombre, "r", encoding="utf-8") as archivo:
             contenido = json.load(archivo)

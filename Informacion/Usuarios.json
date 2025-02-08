@@ -2,5 +2,13 @@
     {
         "dato_nombre": "Malena",
         "dato_clave": "Kl1"
+    },
+    {
+        "dato_nombre": "Quimey",
+        "dato_clave": "12345"
+    },
+    {
+        "dato_nombre": "Huilen",
+        "dato_clave": "12345"
     }
 ]
