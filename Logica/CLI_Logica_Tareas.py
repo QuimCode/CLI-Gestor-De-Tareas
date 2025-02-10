@@ -19,9 +19,9 @@ def crear_tarea(usuario):
 #====================================CREAR ARCHIVO====================================
 ruta_carpeta = "Informacion/Tareas.json"
 
-def crear_archivo_tarea(nombre, datos):
+def crear_archivo_tarea(datos):
     try:
-        with open(ruta_carpeta and nombre, "r", encoding="utf-8") as archivo:
+        with open(ruta_carpeta, "r", encoding="utf-8") as archivo:
             contenido = json.load(archivo)
 
             for item in contenido:
@@ -35,7 +35,7 @@ def crear_archivo_tarea(nombre, datos):
         contenido = []
         contenido.append(datos)
 
-    with open(nombre and ruta_carpeta, "w", encoding="utf-8") as archivo:
+    with open(ruta_carpeta, "w", encoding="utf-8") as archivo:
         json.dump(contenido, archivo, indent=4, ensure_ascii=False)
         print("Registro exitoso")
 

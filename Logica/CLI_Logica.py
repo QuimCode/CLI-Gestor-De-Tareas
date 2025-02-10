@@ -40,7 +40,7 @@ def interacion_menu_app(user):
         if opciones == 1:
             print("Crear tarea")
             datos = menu.menu_registro_tarea(user)
-            log_tareas.crear_archivo_tarea(user, datos)
+            log_tareas.crear_archivo_tarea(datos)
         elif opciones == 2:
             print("Editar tarea")
         elif opciones == 3:
