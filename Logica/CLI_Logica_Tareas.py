@@ -39,3 +39,31 @@ def crear_archivo_tarea(datos):
         json.dump(contenido, archivo, indent=4, ensure_ascii=False)
         print("Registro exitoso")
 
+#====================================CREAR ARCHIVO====================================
+
+def editar_tarea(usuario):
+    usuario_actual = usuario
+    print(f"Hola {usuario_actual} porfavor ingrese el nombre de la tarea que desea editar,")
+    nombre_tarea = input("Nombre de la tarea a editar:")
+    try:
+        pass
+    except:
+        pass
+
+def listar_tarea(usuario):
+    usuario_actual = usuario
+    print(f"Estas son sus tareas usuario {usuario_actual}")
+    try:
+        with open(ruta_carpeta, "r", encoding="utf-8") as archivo:
+            contenido = json.load(archivo)
+            for item in contenido:
+                if item["usuario"] == usuario_actual:
+                    print(f"Tarea: {item['nombre_de_tarea']}")
+                    print(f"Descripcion: {item['descripcion_de_tarea']}")
+                    print(f"Horario: {item['horario_de_tarea']}")
+                    print(f"Tarea terminada: {item['tarea_terminada']}")
+                    print(f"Tarea no terminada: {item['tarea_no_terminada']}")
+                    print(f"Tarea no vencida: {item['tarea_no_vencida']}")
+                    print("")
+    except FileNotFoundError:
+        print("No hay tareas creadas")

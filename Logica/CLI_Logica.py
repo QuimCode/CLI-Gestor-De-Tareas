@@ -43,6 +43,7 @@ def interacion_menu_app(user):
             log_tareas.crear_archivo_tarea(datos)
         elif opciones == 2:
             print("Editar tarea")
+
         elif opciones == 3:
             print("Eliminar tarea")
         elif opciones == 4:
@@ -53,6 +54,7 @@ def interacion_menu_app(user):
             print("Listar tareas no terminadas")
         elif opciones == 7:
             print("Listar todas las tareas")
+            log_tareas.listar_tarea(user)
         elif opciones == 8:
             print("Volver al menu principal")            
             # menu.menu_inicial()
